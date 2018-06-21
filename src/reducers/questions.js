@@ -7,5 +7,7 @@ export default function question(state = {}, action) {
         ...state,
         ...action.questions
       }
+    default:
+      return state
   }
 }

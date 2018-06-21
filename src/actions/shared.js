@@ -7,9 +7,9 @@ export const handleInitialData = () => {
   return (dispatch) => {
     return getInitialData()
       .then(({ users, questions }) => {
+        dispatch(setAuthedUser('tylermcginnis'))
         dispatch(recieveUsers(users))
         dispatch(recieveQuestions(questions))
-        dispatch(setAuthedUser('tylermcginnis'))
       }) 
   }
 }

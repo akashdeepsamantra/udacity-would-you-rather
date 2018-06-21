@@ -6,3 +6,5 @@ export const setAuthedUser = (user) => {
     user
   }
 }
+
+export default setAuthedUser

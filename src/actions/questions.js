@@ -6,3 +6,5 @@ export const recieveQuestions = (questions) => {
     questions
   }
 }
+
+export default recieveQuestions
