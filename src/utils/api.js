@@ -5,13 +5,15 @@ import {
   _saveQuestionAnswer
  } from './_Data'
 
- export const getUser = () => {
-   return _getUsers()
- }
-
- export const getQuestions = () => {
-   return _getQuestions()
- }
+export const getInitialData = () => {
+  return Promise.all([
+    _getUsers(),
+    _getQuestions()
+  ]).then(({users, questions}) => ({
+    users,
+    questions
+  })) 
+}
 
  export const saveQuestion = (question) => {
   return _saveQuestion(question)
