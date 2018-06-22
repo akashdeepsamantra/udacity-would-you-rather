@@ -15,6 +15,10 @@ export const getInitialData = () => {
   })) 
 }
 
+export const getUsers = () => {
+  return _getUsers()
+}
+
  export const saveQuestion = (question) => {
   return _saveQuestion(question)
  }

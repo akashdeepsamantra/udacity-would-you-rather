@@ -6,4 +6,6 @@ const AddQuetion = () => {
       <p>Add Question</p>
     </div>
   )
-} 
+}
+
+export default AddQuetion

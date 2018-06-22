@@ -3,3 +3,20 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.chooseUser {
+  text-align: center;
+  padding-top: 10%;
+}
+
+.imageStyle {
+  height: 150px;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.nameStyle {
+  font: 1rem 'Abril Fatface', cursive;
+  margin: 0 10px 10px;
+  text-align: center;
+}
