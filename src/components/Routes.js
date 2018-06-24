@@ -12,29 +12,17 @@ export default class Routes extends Component {
         <Route 
           exact
           path='/'
-          render = {props => (
-            <div>
-              <QuestionList />
-            </div>
-          )}
+          component = {QuestionList}
         />
         <Route
           exact
           path = '/leaderboard'
-          render = {props => (
-            <div>
-              <Leaderboard />
-            </div>
-          )}
+          component = {Leaderboard}
         />
         <Route 
           exact
           path = '/addQuestion'
-          render = {props => (
-            <div>
-              <AddQuestion />
-            </div>
-          )}
+          component = {AddQuestion}
         />
       </Switch>
     )

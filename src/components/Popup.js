@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 import { getUsers } from '../utils/api'
-import { setAuthedUser } from '../actions/authedUser';
 
 class Popup extends Component {
   constructor(props) {

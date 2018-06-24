@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import { handleInitialData } from '../actions/shared'
 import Routes from './Routes'
@@ -40,4 +41,4 @@ const mapDispatchToProps = (dispatch) => {
   return dispatch
 }
 
-export default connect(mapDispatchToProps)(App);
+export default withRouter(connect(mapDispatchToProps)(App))
