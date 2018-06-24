@@ -13,11 +13,11 @@ class QuestionList extends Component {
   }
 
   render() {
-    const answered = Object.values(this.props.users).filter(user => user.id === this.props.user)[0]
-    // console.log(answered["id"])
+    console.log(this.props.filteredQuestions)
     return (
       (this.props.users !== 'undefined' && this.props.questions !== 'undefined')?
       <div>
+
       </div>:
       <div>
         Loading
@@ -26,10 +26,18 @@ class QuestionList extends Component {
   }
 }
 
-const mapStateToProps = ({ users, questions, authedUser }) => ({
-  users: users,
-  questions: questions,
-  user: authedUser
-})
+const mapStateToProps = ({ users, questions, authedUser }) => {
+  const questionIds = Object.keys(questions).sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+  
+  const user = ( authedUser && users.hasOwnProperty(authedUser) )
+    ? users[authedUser]
+    : { answers: {} }
+  
+  const filteredQuestions = questionIds.filter(question => user.answers.hasOwnProperty(question))
+
+  return {
+    filteredQuestions
+  }
+}
 
 export default connect(mapStateToProps)(QuestionList)
