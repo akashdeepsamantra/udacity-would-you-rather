@@ -1,11 +1,33 @@
-import React from 'react'
+import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 
-const UnansweredQuetsions = (props) => {
+import Question from './Question';
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1
+  }
+});
+
+let UnansweredQuestions = props => {
+  const { classes } = props;
+  const questionDetails = Object.values(props.questions);
+  const details = questionDetails.filter(question => props.unanswered.includes(question.id));
+
   return (
-    <div>
-      UnansweredQuestions
+    <div className={classes.root}>
+      <Grid container spacing={24}>
+        {details.map(question => {
+          return (
+            <Grid item xs={12} sm={6} key={question.id}>
+              <Question optionOne={question.optionOne} optionTwo={question.optionTwo}/>
+            </Grid>
+          )
+        })}
+      </Grid>
     </div>
-  )
-}
+  );
+};
 
-export default UnansweredQuetsions
+export default withStyles(styles)(UnansweredQuestions);

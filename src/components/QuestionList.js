@@ -48,18 +48,22 @@ class QuestionList extends Component {
     const { classes } = this.props
     const { value } = this.state
 
-    return (
-      <div className={classes.root}>
+    return <div className={classes.root}>
         <AppBar position="static">
-          <Tabs value={value} onChange={this.handleChange} styles={{color: 'red'}}>
-            <Tab label="Item One" />
-            <Tab label="Item Two" />
+          <Tabs value={value} onChange={this.handleChange} styles={{ color: 'red' }}>
+            <Tab label="Unanswered Questions" />
+            <Tab label="Answered Questions" />
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer><UnansweredQuestions /></TabContainer>}
-        {value === 1 && <TabContainer><AnsweredQuestions /></TabContainer>}
-      </div>
-    )
+        {value === 0 && 
+          <TabContainer>
+            <UnansweredQuestions questions={this.props.questions} unanswered={this.props.unansweredQuestions} />
+          </TabContainer>}
+        {value === 1 && 
+          <TabContainer>
+            <AnsweredQuestions questions={this.props.questions} answered={this.props.answeredQuestions} />
+          </TabContainer>}
+      </div>;
   }
 }
 
@@ -75,7 +79,8 @@ const mapStateToProps = ({ users, questions, authedUser }) => {
   
   return {
     answeredQuestions,
-    unansweredQuestions
+    unansweredQuestions,
+    questions
   }
 }
 
