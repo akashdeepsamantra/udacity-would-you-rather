@@ -13,7 +13,9 @@ const styles = theme => ({
 let UnansweredQuestions = props => {
   const { classes } = props;
   const questionDetails = Object.values(props.questions);
-  const details = questionDetails.filter(question => props.unanswered.includes(question.id));
+  const details = questionDetails.filter(question =>
+    props.unanswered.includes(question.id)
+  );
 
   return (
     <div className={classes.root}>
@@ -21,9 +23,14 @@ let UnansweredQuestions = props => {
         {details.map(question => {
           return (
             <Grid item xs={12} sm={6} key={question.id}>
-              <Question optionOne={question.optionOne} optionTwo={question.optionTwo}/>
+              <Question
+                questionId={question.id}
+                optionOne={question.optionOne}
+                optionTwo={question.optionTwo}
+                user={props.user}
+              />
             </Grid>
-          )
+          );
         })}
       </Grid>
     </div>

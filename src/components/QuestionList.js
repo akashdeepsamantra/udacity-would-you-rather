@@ -73,6 +73,7 @@ class QuestionList extends Component {
         {value === 0 && (
           <TabContainer>
             <UnansweredQuestions
+              user={this.props.authedUser}
               questions={this.props.questions}
               unanswered={this.props.unansweredQuestions}
             />

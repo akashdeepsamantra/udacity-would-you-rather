@@ -6,6 +6,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
+import { saveQuestionAnswer } from '../utils/api'
+
 const styles = theme => ({
   card: {
     width: '95%',
@@ -27,24 +29,29 @@ const styles = theme => ({
   }
 });
 
+const questionAnswered = (option, user) => {
+  console.log(user)
+};
+
 const Question = props => {
   const { classes } = props;
-  let optionOne = null
-  let optionTwo = null
+  let optionOne = null;
+  let optionTwo = null;
   if (props.optionOne !== undefined && props.optionTwo !== undefined) {
-    optionOne = props.optionOne.text
-    optionTwo = props.optionTwo.text
+    optionOne = props.optionOne.text;
+    optionTwo = props.optionTwo.text;
   }
-  let correctAnswerOptionOne, correctAnswerOptionTwo = null
-  
-  if (props.hasOwnProperty("answer")) {
+  let correctAnswerOptionOne,
+    correctAnswerOptionTwo = null;
+
+  if (props.hasOwnProperty('answer')) {
     if (props.answers === 'optionOne') {
-      correctAnswerOptionOne = { color: 'white', backgroundColor: 'blue' }
-    }
-    else {
-      correctAnswerOptionTwo = { color: 'white', backgroundColor: 'blue' }
+      correctAnswerOptionOne = { color: 'white', backgroundColor: 'blue' };
+    } else {
+      correctAnswerOptionTwo = { color: 'white', backgroundColor: 'blue' };
     }
   }
+
   return (
     <div>
       <Card className={classes.card}>
@@ -54,10 +61,22 @@ const Question = props => {
           </Typography>
         </CardContent>
         <CardActions style={{ justifyContent: 'center', textAlign: 'center' }}>
-          <Button variant="outlined" color="primary" className={classes.button} style={correctAnswerOptionOne}>
+          <Button
+            variant="outlined"
+            color="primary"
+            className={classes.button}
+            style={correctAnswerOptionOne}
+            onClick={() => questionAnswered("optionOne", props.user, props.questionId)}
+          >
             {optionOne}
           </Button>
-          <Button variant="outlined" color="primary" className={classes.button} style={correctAnswerOptionTwo}>
+          <Button
+            variant="outlined"
+            color="primary"
+            className={classes.button}
+            style={correctAnswerOptionTwo}
+            onClick={() => questionAnswered("optionTwo", props.user)}
+          >
             {optionTwo}
           </Button>
         </CardActions>
