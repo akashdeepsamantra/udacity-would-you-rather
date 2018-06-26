@@ -20,6 +20,10 @@ const styles = theme => ({
   },
   button: {
     margin: theme.spacing.unit
+  },
+  selectedOption: {
+    color: 'white',
+    backgroundColor: 'green'
   }
 });
 
@@ -31,7 +35,16 @@ const Question = props => {
     optionOne = props.optionOne.text
     optionTwo = props.optionTwo.text
   }
+  let correctAnswerOptionOne, correctAnswerOptionTwo = null
   
+  if (props.hasOwnProperty("answer")) {
+    if (props.answers === 'optionOne') {
+      correctAnswerOptionOne = { color: 'white', backgroundColor: 'blue' }
+    }
+    else {
+      correctAnswerOptionTwo = { color: 'white', backgroundColor: 'blue' }
+    }
+  }
   return (
     <div>
       <Card className={classes.card}>
@@ -41,10 +54,10 @@ const Question = props => {
           </Typography>
         </CardContent>
         <CardActions style={{ justifyContent: 'center', textAlign: 'center' }}>
-          <Button variant="outlined" color="primary" className={classes.button}>
+          <Button variant="outlined" color="primary" className={classes.button} style={correctAnswerOptionOne}>
             {optionOne}
           </Button>
-          <Button variant="outlined" color="primary" className={classes.button}>
+          <Button variant="outlined" color="primary" className={classes.button} style={correctAnswerOptionTwo}>
             {optionTwo}
           </Button>
         </CardActions>
