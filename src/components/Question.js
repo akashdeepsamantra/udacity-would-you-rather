@@ -5,8 +5,9 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux'
 
-import { saveQuestionAnswer } from '../utils/api'
+import { handleSaveAnswer } from '../actions/shared'
 
 const styles = theme => ({
   card: {
@@ -29,8 +30,10 @@ const styles = theme => ({
   }
 });
 
-const questionAnswered = (option, user) => {
-  console.log(user)
+const questionAnswered = (answer, props) => {
+  if (!props.hasOwnProperty('answer')) {
+    props.dispatch(handleSaveAnswer(props.user, props.questionId, answer));
+  }
 };
 
 const Question = props => {
@@ -47,7 +50,9 @@ const Question = props => {
   if (props.hasOwnProperty('answer')) {
     if (props.answers === 'optionOne') {
       correctAnswerOptionOne = { color: 'white', backgroundColor: 'blue' };
+      correctAnswerOptionTwo = {};
     } else {
+      correctAnswerOptionOne = {};
       correctAnswerOptionTwo = { color: 'white', backgroundColor: 'blue' };
     }
   }
@@ -66,7 +71,7 @@ const Question = props => {
             color="primary"
             className={classes.button}
             style={correctAnswerOptionOne}
-            onClick={() => questionAnswered("optionOne", props.user, props.questionId)}
+            onClick={() => questionAnswered('optionOne', props)}
           >
             {optionOne}
           </Button>
@@ -75,7 +80,7 @@ const Question = props => {
             color="primary"
             className={classes.button}
             style={correctAnswerOptionTwo}
-            onClick={() => questionAnswered("optionTwo", props.user)}
+            onClick={() => questionAnswered('optionTwo', props)}
           >
             {optionTwo}
           </Button>
@@ -85,4 +90,10 @@ const Question = props => {
   );
 };
 
-export default withStyles(styles)(Question);
+const QuestionWithStyles = withStyles(styles)(Question)
+
+const mapDispatchToProps = (dispatch) => {
+  return dispatch
+}
+
+export default connect(mapDispatchToProps)(QuestionWithStyles);
