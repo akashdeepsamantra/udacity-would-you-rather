@@ -1,41 +1,41 @@
-import { getInitialData, saveQuestion, saveQuestionAnswer } from '../utils/api'
-import recieveUsers from './users'
-import recieveQuestions from './questions'
-import setAuthedUser from './authedUser'
+import { getInitialData, saveQuestion, saveQuestionAnswer } from '../utils/api';
+import recieveUsers from './users';
+import recieveQuestions from './questions';
+import setAuthedUser from './authedUser';
 
-export const ADD_ANSWER = 'ADD_ANSWER'
-export const DELETE_ANSWER = 'DELETE_ANSWER'
-export const ADD_QUESTION = 'ADD_QUESTION'
+export const ADD_ANSWER = 'ADD_ANSWER';
+export const DELETE_ANSWER = 'DELETE_ANSWER';
+export const ADD_QUESTION = 'ADD_QUESTION';
 
-const addAnswer = (answer) => {
+const addAnswer = answer => {
   return {
     type: ADD_ANSWER,
     ...answer
-  }
-}
+  };
+};
 
-const deleteAnswer = (answer) => {
+const deleteAnswer = answer => {
   return {
     type: DELETE_ANSWER,
     ...answer
-  }
-}
+  };
+};
 
-export const handleInitialData = (user) => {
-  return (dispatch) => {
-    return getInitialData()
-      .then(({ users, questions }) => {
-        dispatch(setAuthedUser(user))
-        dispatch(recieveUsers(users))
-        dispatch(recieveQuestions(questions))
-      }) 
-  }
-}
+export const handleInitialData = user => {
+  return dispatch => {
+    return getInitialData().then(({ users, questions }) => {
+      dispatch(setAuthedUser(user));
+      dispatch(recieveUsers(users));
+      dispatch(recieveQuestions(questions));
+    });
+  };
+};
 
 export const handleSaveAnswer = (authedUser, questionId, option) => {
-  return (dispatch) => {
-    dispatch(addAnswer({ authedUser, questionId, option }))
-    return saveQuestionAnswer({authedUser, questionId, answer: option})
-      .catch(() => dispatch(deleteAnswer({ authedUser, questionId, option })))
-  }
-}
+  return dispatch => {
+    dispatch(addAnswer({ authedUser, questionId, option }));
+    return saveQuestionAnswer(authedUser, questionId, option).catch(
+      () => dispatch(deleteAnswer({ authedUser, questionId, option }))
+    );
+  };
+};

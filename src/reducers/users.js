@@ -10,19 +10,16 @@ export default function users(state = {}, action) {
       };
 
     case ADD_ANSWER:
-      // const { userID, questionID, option } = action;
-      // return {
-      //   ...state,
-      //   [userID]: {
-      //     ...state[userID],
-      //     answers: {
-      //       ...state[userID]['answers'],
-      //       [questionID]: option
-      //     }
-      //   }
-      // }
+      const { userID, questionID, option } = action;
       return {
-        ...state
+        ...state,
+        [action.authedUser]: {
+          ...state[action.authedUser],
+          answers: {
+            ...state[action.authedUser]['answers'],
+            [action.questionId]: action.option
+          }
+        }
       }
 
       case DELETE_ANSWER:
