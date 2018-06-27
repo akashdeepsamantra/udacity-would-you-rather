@@ -10,7 +10,6 @@ export default function users(state = {}, action) {
       };
 
     case ADD_ANSWER:
-      const { userID, questionID, option } = action;
       return {
         ...state,
         [action.authedUser]: {

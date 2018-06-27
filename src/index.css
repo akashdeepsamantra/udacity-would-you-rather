@@ -5,7 +5,11 @@ body {
 }
 
 .container {
-  border-style: outset;
+  width: 40%;
+  margin-top: 30px;
+  border-style: ridge;
+  justify-content: center;
+  align-items: center;
 }
 
 .chooseUser {
