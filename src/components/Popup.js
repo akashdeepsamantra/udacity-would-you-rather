@@ -29,6 +29,8 @@ class Popup extends Component {
       let users = Object.values(this.state.users)
       return (
         <div className="chooseUser">
+          <h1>Welcome</h1>
+          <h3>Select your ID</h3>
           {users.map(user => {
             return (
               <div key={user.id} style={{ display: 'inline-block' }} name={user.id} onClick={(user) => this.props.setAuthedUser(user)}>
