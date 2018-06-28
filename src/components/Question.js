@@ -48,7 +48,6 @@ const Question = props => {
     correctAnswerOptionTwo = null;
 
   if (props.hasOwnProperty('answer')) {
-    console.log(props)
     if (props.answer === 'optionOne') {
       correctAnswerOptionOne = { color: 'white', backgroundColor: 'blue' };
       correctAnswerOptionTwo = {};
@@ -57,7 +56,8 @@ const Question = props => {
       correctAnswerOptionTwo = { color: 'white', backgroundColor: 'blue' };
     }
   }
-
+  const optionOneVotes = props.optionOne.votes.length
+  const optionTwoVotes = props.optionTwo.votes.length
   return (
     <div>
       <Card className={classes.card}>
@@ -86,6 +86,7 @@ const Question = props => {
             {optionTwo}
           </Button>
         </CardActions>
+        <p>Option One votes: {optionOneVotes}, Option Two votes: {optionTwoVotes}</p>
       </Card>
     </div>
   );

@@ -24,6 +24,7 @@ let UnansweredQuestions = props => {
           return (
             <Grid item xs={12} sm={6} key={question.id}>
               <Question
+                question={question}
                 questionId={question.id}
                 optionOne={question.optionOne}
                 optionTwo={question.optionTwo}
