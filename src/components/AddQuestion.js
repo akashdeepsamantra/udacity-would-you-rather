@@ -14,7 +14,7 @@ class AddQuestion extends Component {
           className="input-field col s6"
           style={{ width: '50%', margin: '0 auto', fontSize: 10 }}
         >
-          <input id="optionOne" type="text" className="validate" />
+          <input id="optionOne" type="text" className="validate" onChange={event => this.setState({optionOne: event.target.value})}/>
           <label htmlFor="optionOne">Option One</label>
         </div>
         <div
@@ -28,6 +28,8 @@ class AddQuestion extends Component {
         <button className="btn waves-effect blue center-align" type="submit" name="action" style={{ width: '50%', marginLeft: '25%'}} >
           Submit
         </button>
+        <br />
+        <br/>
       </div>
     );
   }

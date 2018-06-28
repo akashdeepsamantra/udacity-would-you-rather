@@ -21,6 +21,19 @@ const deleteAnswer = answer => {
   };
 };
 
+const addQuestion = question => {
+  return {
+    type: ADD_QUESTION,
+    ...question
+  };
+};
+
+export const handleAddQuestion = question => {
+  return dispatch => {
+    dispatch(addQuestion(question));
+  };
+};
+
 export const handleInitialData = user => {
   return dispatch => {
     return getInitialData().then(({ users, questions }) => {
@@ -34,8 +47,8 @@ export const handleInitialData = user => {
 export const handleSaveAnswer = (authedUser, questionId, option) => {
   return dispatch => {
     dispatch(addAnswer({ authedUser, questionId, option }));
-    return saveQuestionAnswer(authedUser, questionId, option).catch(
-      () => dispatch(deleteAnswer({ authedUser, questionId, option }))
+    return saveQuestionAnswer(authedUser, questionId, option).catch(() =>
+      dispatch(deleteAnswer({ authedUser, questionId, option }))
     );
   };
 };
