@@ -2,6 +2,7 @@ import { getInitialData, saveQuestion, saveQuestionAnswer } from '../utils/api';
 import recieveUsers from './users';
 import recieveQuestions from './questions';
 import setAuthedUser from './authedUser';
+import { _saveQuestion } from '../utils/_Data';
 
 export const ADD_ANSWER = 'ADD_ANSWER';
 export const DELETE_ANSWER = 'DELETE_ANSWER';
@@ -24,15 +25,16 @@ const deleteAnswer = answer => {
 const addQuestion = question => {
   return {
     type: ADD_QUESTION,
-    ...question
+    question
   };
 };
 
-export const handleAddQuestion = question => {
-  return dispatch => {
-    dispatch(addQuestion(question));
-  };
-};
+export function handleAddQuestion(question, dispatch) {
+  console.log(question)
+  return saveQuestion(question).then(newQuestion => {
+    dispatch(addQuestion(newQuestion));
+  });
+}
 
 export const handleInitialData = user => {
   return dispatch => {

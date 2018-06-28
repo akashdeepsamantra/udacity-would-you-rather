@@ -19,16 +19,29 @@ export default function users(state = {}, action) {
             [action.questionId]: action.option
           }
         }
-      }
+      };
 
-      case DELETE_ANSWER:
-        return {
-          ...state,
-          [action.authedUser]: {
-            ...state[action.authedUser],
-            answers: state[action.authedUser].answers.filter(answer => answer.id !== action.questionId)
-          }
+    case DELETE_ANSWER:
+      return {
+        ...state,
+        [action.authedUser]: {
+          ...state[action.authedUser],
+          answers: state[action.authedUser].answers.filter(
+            answer => answer.id !== action.questionId
+          )
         }
+      };
+
+    case ADD_QUESTION: {
+      const { author, id } = action.question;
+      return {
+        ...state,
+        [author]: {
+          ...state[author],
+          questions: state[author].questions.concat([id])
+        }
+      }
+    }
 
     default:
       return state;
