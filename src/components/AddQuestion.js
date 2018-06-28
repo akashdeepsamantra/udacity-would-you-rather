@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import { handleAddQuestion } from '../actions/shared';
 
@@ -10,7 +11,8 @@ class AddQuestion extends Component {
   }
   state = {
     optionOneText: '',
-    optionTwoText: ''
+    optionTwoText: '',
+    redirectHome: false
   };
   addQuestion(authedUser) {
     handleAddQuestion({
@@ -18,9 +20,15 @@ class AddQuestion extends Component {
       optionTwoText: this.state.optionTwoText,
       author: authedUser
     }, this.props.dispatch);
+    this.setState({ redirectHome: true })
   }
 
   render() {
+
+    if (this.state.redirectHome) {
+      return <Redirect to='/' />
+    }
+
     return (
       <div className="container">
         <h5 style={{ textAlign: 'center' }}>Add Question</h5>

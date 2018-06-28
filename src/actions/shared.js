@@ -2,7 +2,6 @@ import { getInitialData, saveQuestion, saveQuestionAnswer } from '../utils/api';
 import recieveUsers from './users';
 import recieveQuestions from './questions';
 import setAuthedUser from './authedUser';
-import { _saveQuestion } from '../utils/_Data';
 
 export const ADD_ANSWER = 'ADD_ANSWER';
 export const DELETE_ANSWER = 'DELETE_ANSWER';
