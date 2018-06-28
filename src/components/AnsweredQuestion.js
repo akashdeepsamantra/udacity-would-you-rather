@@ -15,7 +15,6 @@ const AnsweredQuestions = props => {
   const questionDetails = Object.values(props.questions);
   const details = questionDetails.filter(question => props.answered.includes(question.id));
   const answers = users[props.user].answers
-  console.log(answers['vthrdm985a262al8qx3do']);
 
   return (
     <div className={classes.root}>
@@ -28,6 +27,7 @@ const AnsweredQuestions = props => {
           )
         })}
       </Grid>
+      <p style={{ textAlign: 'right', color: 'red' }}>Note: Correct answered are in blue color</p>
     </div>
   );
 };

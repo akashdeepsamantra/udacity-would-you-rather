@@ -48,10 +48,11 @@ const Question = props => {
     correctAnswerOptionTwo = null;
 
   if (props.hasOwnProperty('answer')) {
-    if (props.answers === 'optionOne') {
+    console.log(props)
+    if (props.answer === 'optionOne') {
       correctAnswerOptionOne = { color: 'white', backgroundColor: 'blue' };
       correctAnswerOptionTwo = {};
-    } else {
+    } else if (props.answer === 'optionTwo'){
       correctAnswerOptionOne = {};
       correctAnswerOptionTwo = { color: 'white', backgroundColor: 'blue' };
     }
