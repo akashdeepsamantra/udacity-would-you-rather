@@ -21,7 +21,7 @@ export default class Routes extends Component {
         />
         <Route 
           exact
-          path = '/addQuestion'
+          path = '/add'
           component = {AddQuestion}
         />
       </Switch>
