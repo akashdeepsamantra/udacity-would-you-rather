@@ -28,12 +28,14 @@ let LeaderBoard = props => {
   const sortedUsers = Object.keys(users)
     .map(id => users[id])
     .sort((a, b) => sumQuestionAndAnswer(b) - sumQuestionAndAnswer(a));
+  console.log(sortedUsers)
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
             <TableCell>Rank</TableCell>
+            <TableCell>Profile Picture</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Number of Questions Asked</TableCell>
             <TableCell>Number of Questions Answered</TableCell>
@@ -45,6 +47,7 @@ let LeaderBoard = props => {
               return (
                 <TableRow key={user.id}>
                   <TableCell>{sortedUsers.indexOf(user) + 1}</TableCell>
+                  <TableCell><img className="profileImageStyle" src={user.avatarURL} alt=""/></TableCell>
                   <TableCell>{user.name}</TableCell>
                   <TableCell>{user.questions.length}</TableCell>
                   <TableCell>{Object.values(user.answers).length}</TableCell>
