@@ -12,21 +12,28 @@ class App extends Component {
     super(props)
     this.state = {
       userLoaded: false,
-      user: null
+      user: null,
+      logined: false
     }
     this.setAuthedUser = this.setAuthedUser.bind(this)
+    this.logOut = this.logOut.bind(this)
   }
 
   setAuthedUser(user) {
     this.props.dispatch(handleInitialData(user.target.name))
-    this.setState({userLoaded: true, user: user.target.name})
+    this.setState({userLoaded: true, user: user.target.name, logined: true})
+  }
+
+  logOut() {
+    this.setState({ logined: false })
+    console.log('asdf')
   }
 
   render() {
-    if (this.state.userLoaded) {
+    if (this.state.userLoaded && this.state.logined) {
       return (
         <div>
-          <Header user={this.state.user}/>
+          <Header logOut={this.logOut} user={this.state.user}/>
           <Routes user={this.state.user}/>
         </div>
       )

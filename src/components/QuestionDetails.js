@@ -5,7 +5,10 @@ class QuestionDetails extends Component {
   render() {
     const { question } = this.props;
     if (question === undefined) {
-      return <div />;
+      return <div className="container">
+        <h1>Error 404</h1>
+        <p>Woops, looks like this page does not exist. Check the url</p>
+      </div>;
     }
     console.log(question);
     return (
