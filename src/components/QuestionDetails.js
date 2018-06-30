@@ -10,7 +10,10 @@ class QuestionDetails extends Component {
         <p>Woops, looks like this page does not exist. Check the url</p>
       </div>;
     }
-    console.log(question);
+
+    const URL = this.props.users[this.props.question.author].avatarURL;
+    const percent = question.optionOne.votes.length / (question.optionOne.votes.length + question.optionTwo.votes.length) * 100;
+
     return (
       <div className="container">
         <h5 style={{ textAlign: 'center' }}>Question Details</h5>
@@ -23,6 +26,8 @@ class QuestionDetails extends Component {
             {question.id}
           </p>
           <p className="alignCenter">
+            <img className="profileImageStyle" src={URL} />
+            <br/>
             <strong>Author: </strong>
             {question.author}
           </p>
@@ -35,6 +40,7 @@ class QuestionDetails extends Component {
                 <td colSpan={6}>
                   <p>Text: "{question.optionOne.text}"</p>
                   <p>Vote Count: {question.optionOne.votes.length}</p>
+                  <p>Percentage: {percent}%</p>
                 </td>
               </tr>
               <tr>
@@ -44,6 +50,7 @@ class QuestionDetails extends Component {
                 <td colSpan={6}>
                   <p>Text: "{question.optionTwo.text}"</p>
                   <p>Vote Count: {question.optionTwo.votes.length}</p>
+                  <p>Percentage:{100 - percent}</p>
                 </td>
               </tr>
             </tbody>
