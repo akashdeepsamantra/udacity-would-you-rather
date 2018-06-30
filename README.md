@@ -6,7 +6,7 @@ This is the second project in udacity react nanodegree course. User can answer q
 
 clone the project from github. Run following commands:
 
-'''
+`
 npm install
 npm start
-'''
+`
