@@ -29,7 +29,6 @@ const addQuestion = question => {
 };
 
 export function handleAddQuestion(question, dispatch) {
-  console.log(question)
   return saveQuestion(question).then(newQuestion => {
     dispatch(addQuestion(newQuestion));
   });

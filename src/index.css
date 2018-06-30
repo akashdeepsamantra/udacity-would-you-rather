@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-  width: 40%;
+  width: 70%;
   margin-top: 30px;
   border-style: ridge;
   justify-content: center;
@@ -46,5 +46,9 @@ body {
 .nameStyle {
   font: 1rem 'Abril Fatface', cursive;
   margin: 0 10px 10px;
+  text-align: center;
+}
+
+.alignCenter {
   text-align: center;
 }
