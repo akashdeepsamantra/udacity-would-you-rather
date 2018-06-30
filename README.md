@@ -4,9 +4,11 @@ This is the second project in udacity react nanodegree course. User can answer q
 
 ## Installation
 
-clone the project from github. Run following commands:
+clone the project from github
+`git clone https://github.com/akashdeepsamantra/udacity-would-you-rather.git`
 
-`
-npm install
-npm start
-`
+To install node modules:
+`npm install`
+
+To start: 
+`npm start`
