@@ -52,3 +52,8 @@ body {
 .alignCenter {
   text-align: center;
 }
+
+.loadingStyles {
+  margin-top: 20%;
+  text-align: center;
+}
